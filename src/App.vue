@@ -10,6 +10,9 @@
     <div>
       <button @click="onPlay" v-bind:disabled="isPlaying">Play!</button>
     </div>
+    <div v-bind:hidden="!isPlaying">
+      Playing... Have your patience
+    </div>
     <div>
       <a v-bind:href="etherScan + txHash" target="_blank">{{ this.txHash }}</a>
     </div>

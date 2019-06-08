@@ -9,8 +9,12 @@
     <v-container fluid>
       <v-card flat>
         <v-layout align-center justify-center column fill-height>
-          <v-flex xs12>
+          <v-flex xs12 class="relative">
             <img alt="Cashapon" src="./assets/gatcha.png">
+            <img
+              v-bind:class="['gatcha-handle', isPlaying ? 'gatcha-handle-spin' : '']"
+              src="./assets/gatcha-handle.png"
+            >
           </v-flex>
           <v-flex xs12 sm6 md3>
             <v-text-field
@@ -35,12 +39,6 @@
           </v-flex>
           <v-flex xs12>
             <a v-bind:href="etherScan + txHash" target="_blank">{{ this.txHash }}</a>
-          </v-flex>
-          <v-flex>
-            <img
-              v-bind:class="isPlaying ? 'gatcha-handle-spin' : ''"
-              src="./assets/gatcha-handle.png"
-            >
           </v-flex>
         </v-layout>
       </v-card>
@@ -124,7 +122,15 @@ export default {
   width: 195px !important;
 }
 
+.relative {
+  position: relative;
+}
+
 .gatcha-handle {
+  z-index: 10;
+  position: absolute;
+  top: 177px;
+  left: 267px;
 }
 .gatcha-handle-spin {
   animation: element-spin 2s linear infinite;

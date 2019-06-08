@@ -14,7 +14,6 @@
 const HDWalletProvider = require('truffle-hdwallet-provider');
 
 const mnemonic = 'gesture rather obey video awake genuine patient base soon parrot upset lounge';
-// const mnemonic = 'increase carpet inform must bless sound fit mansion face stable section diagram portion subject mail dinosaur divide shoulder cattle domain discover civil inch own';
 
 module.exports = {
   // See <http://truffleframework.com/docs/advanced/configuration>

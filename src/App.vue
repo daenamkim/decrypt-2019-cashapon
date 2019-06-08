@@ -1,22 +1,33 @@
 
 <template>
-  <div id="app">
-    <div>
-      <img alt="Vue logo" src="./assets/logo.png" />
-    </div>
-    <div>
-      <input type="text" v-model="ether" v-bind:disabled="isPlaying"/>
-    </div>
-    <div>
-      <button @click="onPlay" v-bind:disabled="isPlaying">Play!</button>
-    </div>
-    <div v-bind:hidden="!isPlaying">
-      Playing... Have your patience
-    </div>
-    <div>
-      <a v-bind:href="etherScan + txHash" target="_blank">{{ this.txHash }}</a>
-    </div>
-  </div>
+  <v-app>
+    <v-toolbar>
+      <v-spacer></v-spacer>
+      <v-toolbar-title>Cashapon</v-toolbar-title>
+      <v-spacer></v-spacer>
+    </v-toolbar>
+    <v-container fluid>
+      <v-card flat>
+        <v-layout align-center justify-center column fill-height>
+          <v-flex xs12>
+            <img alt="Vue logo" src="./assets/logo.png" />
+          </v-flex>
+          <v-flex xs12>
+            <input type="text" v-model="ether" v-bind:disabled="isPlaying"/>
+          </v-flex>
+          <v-flex xs12>
+            <v-btn color="primary" large @click="onPlay" v-bind:disabled="isPlaying">Play!</v-btn>
+          </v-flex>
+          <v-flex xs12 v-bind:hidden="!isPlaying">
+            Playing... Have your patience
+          </v-flex>
+          <v-flex xs12>
+            <a v-bind:href="etherScan + txHash" target="_blank">{{ this.txHash }}</a>
+          </v-flex>
+        </v-layout>
+      </v-card>
+    </v-container>
+  </v-app>
 </template>
 
 <script>
@@ -83,12 +94,12 @@ export default {
 </script>
 
 <style>
-#app {
+/* #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-}
+} */
 </style>

@@ -1,6 +1,6 @@
 import web3 from './web3';
 import cashapon from './cashapon.json';
 
-// Contract Info: https://ropsten.etherscan.io/address/0x1670dfb52806de7789d5cf7d5c005cf7083f9a5d#contracts
-const address = '0x1670dfb52806de7789d5cf7d5c005cf7083f9a5d';
+// Contract Info: https://ropsten.etherscan.io/address/0x2ef0db93f2Ee173d3e9d6daAAbCa9884bC50fC63#code
+const address = '0x2ef0db93f2Ee173d3e9d6daAAbCa9884bC50fC63';
 export default new web3.eth.Contract(cashapon, address);

@@ -1,8 +1,7 @@
 [
   {
     "constant": true,
-    "inputs": [
-    ],
+    "inputs": [],
     "name": "pendingAdmin",
     "outputs": [
       {
@@ -18,23 +17,16 @@
     "constant": false,
     "inputs": [
       {
-        "name": "newAdmin",
-        "type": "address"
+        "name": "index",
+        "type": "uint8"
       }
     ],
-    "name": "transferAdmin",
+    "name": "removeToken",
     "outputs": [
-    ],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-    ],
-    "name": "claimAdmin",
-    "outputs": [
+      {
+        "name": "",
+        "type": "address[]"
+      }
     ],
     "payable": false,
     "stateMutability": "nonpayable",
@@ -48,9 +40,17 @@
         "type": "address"
       }
     ],
-    "name": "transferAdminQuickly",
-    "outputs": [
-    ],
+    "name": "transferAdmin",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "claimAdmin",
+    "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
@@ -58,18 +58,29 @@
   {
     "constant": false,
     "inputs": [
+      {
+        "name": "newAdmin",
+        "type": "address"
+      }
     ],
+    "name": "transferAdminQuickly",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [],
     "name": "play",
-    "outputs": [
-    ],
+    "outputs": [],
     "payable": true,
     "stateMutability": "payable",
     "type": "function"
   },
   {
     "constant": true,
-    "inputs": [
-    ],
+    "inputs": [],
     "name": "kyber",
     "outputs": [
       {
@@ -91,6 +102,10 @@
     ],
     "name": "addToken",
     "outputs": [
+      {
+        "name": "",
+        "type": "address[]"
+      }
     ],
     "payable": false,
     "stateMutability": "nonpayable",
@@ -117,8 +132,7 @@
   },
   {
     "constant": true,
-    "inputs": [
-    ],
+    "inputs": [],
     "name": "admin",
     "outputs": [
       {
@@ -128,6 +142,20 @@
     ],
     "payable": false,
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "numTokens",
+        "type": "uint256"
+      }
+    ],
+    "name": "playMultiple",
+    "outputs": [],
+    "payable": true,
+    "stateMutability": "payable",
     "type": "function"
   },
   {
@@ -181,6 +209,18 @@
       }
     ],
     "name": "TokenAdded",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "name": "token",
+        "type": "address"
+      }
+    ],
+    "name": "TokenRemoved",
     "type": "event"
   },
   {

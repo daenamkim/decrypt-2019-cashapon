@@ -3,14 +3,14 @@
   <v-app>
     <v-toolbar>
       <v-spacer></v-spacer>
-      <v-toolbar-title>Cashapon</v-toolbar-title>
+      <v-toolbar-title>$$ Cashapon $$</v-toolbar-title>
       <v-spacer></v-spacer>
     </v-toolbar>
     <v-container fluid>
       <v-card flat>
         <v-layout align-center justify-center column fill-height>
           <v-flex xs12>
-            <img alt="Vue logo" src="./assets/logo.png">
+            <img alt="Cashapon" src="./assets/gatcha.png">
           </v-flex>
           <v-flex xs12 sm6 md3>
             <v-text-field
@@ -35,6 +35,12 @@
           </v-flex>
           <v-flex xs12>
             <a v-bind:href="etherScan + txHash" target="_blank">{{ this.txHash }}</a>
+          </v-flex>
+          <v-flex>
+            <img
+              v-bind:class="isPlaying ? 'gatcha-handle-spin' : ''"
+              src="./assets/gatcha-handle.png"
+            >
           </v-flex>
         </v-layout>
       </v-card>
@@ -116,5 +122,20 @@ export default {
 <style>
 .button-width {
   width: 195px !important;
+}
+
+.gatcha-handle {
+}
+.gatcha-handle-spin {
+  animation: element-spin 2s linear infinite;
+}
+
+@keyframes element-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>

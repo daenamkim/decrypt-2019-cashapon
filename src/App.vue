@@ -1,7 +1,7 @@
 
 <template>
   <v-app>
-    <v-toolbar class="toolbar-background"></v-toolbar>
+    <v-toolbar class="toolbar-background" @click="onPlayBackground"></v-toolbar>
     <v-container fluid>
       <v-card>
         <v-layout align-center justify-center column fill-height>
@@ -85,7 +85,15 @@ export default {
       numTokens: 1,
       GashaToggleTimerId: null,
       GashaToggle: false,
+      prevSound: null,
     };
+  },
+  async mounted() {
+    try {
+      this.prevSound = await this.playSound('background');
+    } catch (error) {
+      console.log(error);
+    }
   },
   created() {
     console.log('ACCOUNT:', web3.eth.getAccounts());
@@ -111,6 +119,18 @@ export default {
       });
   },
   methods: {
+    async onPlayBackground() {
+      this.prevSound = await this.playSound('background');
+    },
+    async playSound(soundFile) {
+      const source = new Audio(`/${soundFile}.mp3`);
+      if (this.prevSound) {
+        this.prevSound.pause();
+        this.prevSound.currentTime = 0;
+      }
+      await source.play();
+      return source;
+    },
     onGoToEtherscan() {
       window.open(this.etherScan + this.txHash, '_blank');
     },
@@ -152,8 +172,9 @@ export default {
     ether(newEther) {
       console.log(newEther);
     },
-    dialogVisible(newDialogVisible) {
+    async dialogVisible(newDialogVisible) {
       if (newDialogVisible) {
+        this.prevSound = await this.playSound('applause');
         this.GashaToggleTimerId = setInterval(() => {
           this.GashaToggle = !this.GashaToggle;
         }, 500);

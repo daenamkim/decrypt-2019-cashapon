@@ -7,7 +7,7 @@
       <v-spacer></v-spacer>
     </v-toolbar>
     <v-container fluid>
-      <v-card flat>
+      <v-card>
         <v-layout align-center justify-center column fill-height>
           <v-flex xs12 class="relative">
             <img alt="Cashapon" src="./assets/gatcha.png">
@@ -37,6 +37,10 @@
         </v-layout>
       </v-card>
     </v-container>
+    <v-footer class="pa-3">
+      <v-spacer></v-spacer>
+      <div>Anton Buenavista, Daenam Kim, Masahiro Takeda and Takuya Umeki @ Decrypt Tokyo 2019</div>
+    </v-footer>
   </v-app>
 </template>
 

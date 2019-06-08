@@ -31,7 +31,7 @@
       </v-card>
       <v-dialog v-model="dialogVisible" width="500">
         <v-card>
-          <v-card-title class="headline grey lighten-2" primary-title>Yay! Gasha!!</v-card-title>
+          <v-card-title class="headline grey lighten-2" primary-title>Yay! Casha!!</v-card-title>
           <v-card-text class="test">
             <v-layout align-center justify-center column fill-height>
               <v-flex xs12>

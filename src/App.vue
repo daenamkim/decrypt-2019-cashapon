@@ -14,6 +14,7 @@
             <img
               v-bind:class="['gatcha-handle', isPlaying ? 'gatcha-handle-spin' : '']"
               src="./assets/gatcha-handle.png"
+              @click="onPlay"
             >
           </v-flex>
           <v-flex xs12 sm6 md3>
@@ -24,18 +25,11 @@
               v-bind:disabled="isPlaying"
             ></v-text-field>
           </v-flex>
-          <v-flex xs12 sm6 md3>
-            <v-btn
-              flex
-              color="primary"
-              class="button-width"
-              large
-              @click="onPlay"
-              v-bind:disabled="isPlaying"
-            >Play!</v-btn>
-          </v-flex>
           <v-flex xs12 sm6 md3 v-if="isPlaying">
-            <v-chip color="orange" text-color="white">Playing... Have your patience</v-chip>
+            <v-chip
+              color="orange"
+              text-color="white"
+            >Don't close this app! Please have your patience!</v-chip>
           </v-flex>
           <v-flex xs12>
             <a v-bind:href="etherScan + txHash" target="_blank">{{ this.txHash }}</a>

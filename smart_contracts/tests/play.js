@@ -45,7 +45,13 @@ module.exports = async (callback) => {
   result = await CashaponInstance.play(
     { from: userWallet, value: web3.utils.toWei(new BN(1)) },
   );
-  tx(result, 'Cashapon!!');
+  tx(result, 'Single-token Cashapon!!');
+
+  result = await CashaponInstance.playMultiple(
+    '3',
+    { from: userWallet, value: web3.utils.toWei(new BN(1)) },
+  );
+  tx(result, 'Multi-token Cashapon!!');
 
   stdlog(
     `ETH balance of ${userWallet} = ${web3.utils.fromWei(await web3.eth.getBalance(userWallet))}`,

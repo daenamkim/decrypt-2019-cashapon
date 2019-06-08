@@ -14,6 +14,7 @@
 const HDWalletProvider = require('truffle-hdwallet-provider');
 
 const mnemonic = 'gesture rather obey video awake genuine patient base soon parrot upset lounge';
+// const mnemonic = 'increase carpet inform must bless sound fit mansion face stable section diagram portion subject mail dinosaur divide shoulder cattle domain discover civil inch own';
 
 module.exports = {
   // See <http://truffleframework.com/docs/advanced/configuration>
@@ -53,8 +54,8 @@ module.exports = {
       skipDryRun: true,
     },
     ropsten: {
-      provider: new HDWalletProvider(mnemonic, 'http://localhost:8545', 0, 10),
-      host: '127.0.0.1',
+      provider: new HDWalletProvider(mnemonic, 'https://ropsten.infura.io/v3/fb1b33f907c34afca9eff5c81d09c094', 0, 10),
+      host: 'ropsten.infura.io',
       port: 80,
       network_id: 3,
       gas: 7000000,
@@ -70,7 +71,7 @@ module.exports = {
       network_id: 1,
       gas: 7000000,
       gasPrice: 20000000000,
-      confirmations: 0,
+      confirmations: 1,
       timeoutBlocks: 500,
       skipDryRun: false,
     },

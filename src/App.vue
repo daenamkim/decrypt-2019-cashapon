@@ -31,12 +31,27 @@
               text-color="white"
             >Don't close this app! Please have your patience!</v-chip>
           </v-flex>
-          <v-flex xs12>
-            <a v-bind:href="etherScan + txHash" target="_blank">{{ this.txHash }}</a>
-          </v-flex>
         </v-layout>
       </v-card>
     </v-container>
+
+    <v-dialog v-model="dialogVisible" width="500">
+      <v-card>
+        <v-card-title class="headline grey lighten-2" primary-title>Yay! Gatcha!!</v-card-title>
+        <v-card-text>
+          You can check your coin of the ether you used below
+          <a
+            v-bind:href="etherScan + txHash"
+            target="_blank"
+          >{{ this.txHash }}</a>
+        </v-card-text>
+        <v-divider></v-divider>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="primary" flat @click="dialogVisible = false">Close</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
     <v-footer class="pa-3">
       <v-spacer></v-spacer>
       <div>Anton Buenavista, Daenam Kim, Masahiro Takeda and Takuya Umeki @ Decrypt Tokyo 2019</div>
@@ -58,6 +73,7 @@ export default {
       etherScan: 'https://ropsten.etherscan.io/tx/',
       txHash: '',
       isPlaying: false,
+      dialogVisible: false,
     };
   },
   created() {
@@ -68,6 +84,7 @@ export default {
         console.log(event);
         this.isPlaying = false;
         this.txHash = event.transactionHash;
+        this.dialogVisible = true;
       })
       .on('data', event => {
         console.log('data', event); // same results as the optional callback above
@@ -87,7 +104,7 @@ export default {
       if (
         parseFloat(this.ether) < 0.1 ||
         parseFloat(this.ether) > 1 ||
-        this.isRunning
+        this.isPlaying
       ) {
         return;
       }

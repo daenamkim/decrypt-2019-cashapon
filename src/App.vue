@@ -10,16 +10,28 @@
       <v-card flat>
         <v-layout align-center justify-center column fill-height>
           <v-flex xs12>
-            <img alt="Vue logo" src="./assets/logo.png" />
+            <img alt="Vue logo" src="./assets/logo.png">
           </v-flex>
-          <v-flex xs12>
-            <input type="text" v-model="ether" v-bind:disabled="isPlaying"/>
+          <v-flex xs12 sm6 md3>
+            <v-text-field
+              label="Put Your Ether"
+              outline
+              v-model="ether"
+              v-bind:disabled="isPlaying"
+            ></v-text-field>
           </v-flex>
-          <v-flex xs12>
-            <v-btn color="primary" large @click="onPlay" v-bind:disabled="isPlaying">Play!</v-btn>
+          <v-flex xs12 sm6 md3>
+            <v-btn
+              flex
+              color="primary"
+              class="button-width"
+              large
+              @click="onPlay"
+              v-bind:disabled="isPlaying"
+            >Play!</v-btn>
           </v-flex>
-          <v-flex xs12 v-bind:hidden="!isPlaying">
-            Playing... Have your patience
+          <v-flex xs12 sm6 md3 v-if="isPlaying">
+            <v-chip color="orange" text-color="white">Playing... Have your patience</v-chip>
           </v-flex>
           <v-flex xs12>
             <a v-bind:href="etherScan + txHash" target="_blank">{{ this.txHash }}</a>
@@ -49,24 +61,32 @@ export default {
   created() {
     console.log(web3.eth.getAccounts());
 
-    cashapon.events.Played({fromBlock: "latest"}, (error, event) => {
-          console.log(event);
-          this.isPlaying = false;
-          this.txHash = event.transactionHash;
-        }).on('data', (event) => {
-          console.log('data', event); // same results as the optional callback above
-        }).on('changed', (event) => {
-            // remove event from local database
-            console.log('changed', event); // same results as the optional callback above
-        }).on('error', (error) => {
-          console.error(error);
-          this.isPlaying = false;
-          this.txHash = '';
-        });
+    cashapon.events
+      .Played({ fromBlock: 'latest' }, (error, event) => {
+        console.log(event);
+        this.isPlaying = false;
+        this.txHash = event.transactionHash;
+      })
+      .on('data', event => {
+        console.log('data', event); // same results as the optional callback above
+      })
+      .on('changed', event => {
+        // remove event from local database
+        console.log('changed', event); // same results as the optional callback above
+      })
+      .on('error', error => {
+        console.error(error);
+        this.isPlaying = false;
+        this.txHash = '';
+      });
   },
   methods: {
     async onPlay() {
-      if (parseFloat(this.ether) < 0.1 || parseFloat(this.ether) > 1 || this.isRunning) {
+      if (
+        parseFloat(this.ether) < 0.1 ||
+        parseFloat(this.ether) > 1 ||
+        this.isRunning
+      ) {
         return;
       }
 
@@ -83,23 +103,18 @@ export default {
         console.log(error);
         this.isPlaying = false;
       }
-    }
+    },
   },
   watch: {
     ether(newEther) {
       console.log(newEther);
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style>
-/* #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-} */
+.button-width {
+  width: 195px !important;
+}
 </style>

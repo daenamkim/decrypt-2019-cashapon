@@ -1,6 +1,3 @@
-// All code examples in this guide have not been audited and should not be used in production.
-// If so, it is done at your own risk!
-
 /* global artifacts, web3 */
 /* eslint-disable no-underscore-dangle, no-unused-vars */
 const BN = require('bn.js');

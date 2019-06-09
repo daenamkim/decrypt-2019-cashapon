@@ -20,6 +20,7 @@
               v-model="ether"
               v-bind:disabled="isPlaying"
             ></v-text-field>
+            <!-- TODO: <v-select v-model="numTokens" :items="numTokensList" label="Outline style" outline></v-select> -->
           </v-flex>
           <v-flex xs12 sm6 md3 v-if="isPlaying">
             <v-chip
@@ -83,6 +84,7 @@ export default {
       isPlaying: false,
       dialogVisible: false,
       numTokens: 1,
+      numTokensList: [1, 2, 3, 4, 5],
       GashaToggleTimerId: null,
       GashaToggle: false,
       prevSound: null,
@@ -148,14 +150,13 @@ export default {
 
       try {
         const accounts = await web3.eth.getAccounts();
-        if (this.numTokens > 1) {
+        if (parseInt(this.numTokens) < 2) {
           await cashapon.methods.play().send({
             gas: '500000',
             from: accounts[0],
             value: web3.utils.toWei(this.ether, 'ether'),
           });
         } else {
-          // TODO: add playMultiple(numTokens)
           await cashapon.methods.playMultiple(this.numTokens).send({
             gas: '1100000',
             from: accounts[0],
@@ -171,6 +172,9 @@ export default {
   watch: {
     ether(newEther) {
       console.log(newEther);
+    },
+    numTokens(newNumTokens) {
+      console.log(newNumTokens);
     },
     async dialogVisible(newDialogVisible) {
       if (newDialogVisible) {

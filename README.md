@@ -1,3 +1,5 @@
+![Cashapon](./cashapon.png)
+
 # Cashapon
 
 - [Live Demo](https://cashapon.netlify.com)
